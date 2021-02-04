@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-native';
+import { FKA_PRIMARY } from '../styles/Colors';
 
 interface Props {
     label: string;
@@ -8,7 +9,8 @@ interface Props {
 
 const FkaButton = (props: Props) => {
     return (
-        <Button onPress={props.onClick} title={props.label} accessibilityLabel={props.label} />
+        <Button color={FKA_PRIMARY} onPress={props.onClick} title={props.label} accessibilityLabel={props.label} />
     )
 }
+
 export default FkaButton;
