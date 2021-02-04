@@ -1,11 +1,14 @@
 import React from 'react';
 import { Button } from 'react-native';
 
-const FkaButton = () => {
-    const onButtonClick = () => alert("You just pressed the button");
+interface Props {
+    label: string;
+    onClick: () => void
+}
 
+const FkaButton = (props: Props) => {
     return (
-        <Button onPress={onButtonClick} title="Click me!" accessibilityLabel="Click in me!" />
+        <Button onPress={props.onClick} title={props.label} accessibilityLabel={props.label} />
     )
 }
 export default FkaButton;
