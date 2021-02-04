@@ -39,7 +39,10 @@ const WeatherStore: React.FC = (props) => {
         type: WeatherActionTypes.SetWeather,
         payload: weather
       });
-      setIsLoading(false);
+      // Simple timeout just for show off our fancy spinner while loading data!
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500)
     } catch (error) {
       setIsLoading(false);
     }

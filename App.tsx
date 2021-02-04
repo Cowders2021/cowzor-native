@@ -17,13 +17,13 @@ export default function App() {
       <StatusBar style="auto" />
       <NativeRouter>
         <ToastStore>
-          <Header />
-          <Route exact path="/" component={Login} />
           <WeatherStore>
+            <Header />
+            <Route exact path="/" component={Login} />
             <Route path="/home" component={Home} />
             <Route path="/weather" component={Weather} />
+            <Route path="/camera" component={CameraPage} />
           </WeatherStore>
-          <Route path="/camera" component={CameraPage} />
           <FkaToast />
         </ToastStore>
       </NativeRouter>
