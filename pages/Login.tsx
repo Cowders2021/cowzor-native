@@ -2,6 +2,7 @@ import React from "react"
 import { StyleSheet, View, Text } from "react-native"
 import { useHistory } from "react-router-native"
 import FkaButton from "../components/Button"
+import { FKA_PRIMARY, FKA_YELLOW } from "../styles/Colors"
 
 const Login = () => {
     const history = useHistory();
@@ -27,8 +28,8 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#5ca673',
-        color: '#ffe500',
+        backgroundColor: FKA_PRIMARY,
+        color: FKA_YELLOW,
         padding: 20
     },
 
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     },
 
     headline: {
-        color: '#ffe500',
+        color: FKA_YELLOW,
         fontSize: 50
     }
 })

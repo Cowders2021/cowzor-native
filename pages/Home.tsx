@@ -11,11 +11,9 @@ const Home = () => {
 
     return (
         <View style={styles.container}>
-            <>
-                <Text>Velkommen til Cowzor</Text>
-                <Text>hello</Text>
-                <FkaButton label="Logout" onClick={onLogoutButtonClick}></FkaButton>
-            </>
+            <Text>Velkommen til Cowzor</Text>
+            <Text>hello</Text>
+            <FkaButton label="Logout" onClick={onLogoutButtonClick}></FkaButton>
         </View>
     )
 }
