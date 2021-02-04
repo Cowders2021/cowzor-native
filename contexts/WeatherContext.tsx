@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { createContext, useReducer } from "react"
 import { weatherReducer } from "./reducers/WeatherReducer"
 import { WeatherActionTypes } from "./actions/WeatherActions";
@@ -45,3 +45,6 @@ export const WeatherContext = createContext<IWeatherContext>(initialWeatherState
 
 export default WeatherStore;
 
+export const useWeatherContext = () => {
+  return useContext(WeatherContext);
+}
