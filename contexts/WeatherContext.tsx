@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import {Text} from "react-native"
 import { createContext, useReducer } from "react"
 import { weatherReducer } from "./reducers/WeatherReducer"
 import { WeatherActionTypes } from "./actions/WeatherActions";
