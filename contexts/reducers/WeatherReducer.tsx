@@ -18,5 +18,9 @@ export const weatherReducer = (state: WeatherState, action: WeatherActions): Wea
         ...state,
         error: action.payload
       };
+    default:
+      return {
+        ...state
+      }
   }
 }
