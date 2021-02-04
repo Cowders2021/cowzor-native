@@ -34,6 +34,7 @@ const Weather = () => {
             <Text style={styles.headline}>Værvarsel</Text>
             <FlatList
                 data={weatherState.weather?.list}
+                keyExtractor={(item) => item.dt.toString()}
                 renderItem={({ item, index }) => (<WeatherRow  {...mapListItemToWeatherRow(item)} key={`weather-row--${index}`} />)}>
             </FlatList>
         </Container>
