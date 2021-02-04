@@ -1,11 +1,18 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableHighlight } from 'react-native';
+import { useHistory } from 'react-router-native';
 import { FKA_PRIMARY, FKA_PRIMARY_FG } from '../styles/Colors';
 
 const Header = () => {
+    const history = useHistory();
+    const onLogoClick = () => {
+        history.push('/')
+    }
     return (
         <View style={styles.header}>
-            <Image source={require('../assets/fk-large.png')} style={styles.logo} />
+            <TouchableHighlight onPress={onLogoClick}>
+                <Image source={require('../assets/fk-large.png')} style={styles.logo} />
+            </TouchableHighlight>
             <View>
                 <Text style={styles.appName}>Cowzor</Text>
             </View>
