@@ -10,12 +10,14 @@ const Home = () => {
     }
 
     const navigateToWeatherPage = () => history.push('/weather')
+    const navigateToCameraPage = () => history.push('/camera')
 
     return (
         <View style={styles.container}>
             <Text>Velkommen til Cowzor</Text>
             <FkaButton label="Logout" onClick={onLogoutButtonClick}></FkaButton>
             <FkaButton label="Gå til vær data" onClick={navigateToWeatherPage}></FkaButton>
+            <FkaButton label="Gå til kamera" onClick={navigateToCameraPage}></FkaButton>
         </View>
     )
 }

@@ -5,6 +5,7 @@ import Header from './components/Header';
 import FkaToast from './components/Toast';
 import ToastStore from './contexts/ToastContext';
 import WeatherStore from './contexts/WeatherContext';
+import CameraPage from './pages/Camera';
 import Home from "./pages/Home";
 import Login from './pages/Login';
 import Weather from './pages/Weather';
@@ -22,6 +23,7 @@ export default function App() {
             <Route path="/home" component={Home} />
             <Route path="/weather" component={Weather} />
           </WeatherStore>
+          <Route path="/camera" component={CameraPage} />
           <FkaToast />
         </ToastStore>
       </NativeRouter>
