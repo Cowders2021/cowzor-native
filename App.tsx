@@ -1,23 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import FkaButton from './components/Button';
+import { NativeRouter, Route } from "react-router-native";
+import Home from "./pages/Home";
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <>
       <StatusBar style="auto" />
-      <Text>Velkommen til Cowzor</Text>
-      <FkaButton />
-    </View>
+      <NativeRouter>
+        <Route exact path="/" component={Home} />
+      </NativeRouter>
+
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
