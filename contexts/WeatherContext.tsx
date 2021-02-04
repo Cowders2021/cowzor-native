@@ -3,9 +3,11 @@ import { createContext, useReducer } from "react"
 import { weatherReducer } from "./reducers/WeatherReducer"
 import { WeatherActionTypes } from "./actions/WeatherActions";
 import { Spinner } from "../components/Spinner";
+import { WeatherAPI } from "../api/weather/weatherApi";
+import { IWeather } from "../api/weather/weather.interface";
 
 export type WeatherState = {
-  weather: any;
+  weather: IWeather | null
   loading: boolean;
   error: string | null;
 }
@@ -17,7 +19,7 @@ interface IWeatherContext {
 const initialWeatherState: IWeatherContext = {
   weatherState: {
     weather: null,
-    loading: true,
+    loading: false,
     error: null,
   } as WeatherState
 };
@@ -26,17 +28,33 @@ const WeatherStore: React.FC = (props) => {
   const [weatherState, dispatch] = useReducer(weatherReducer, initialWeatherState.weatherState)
 
   useEffect(() => {
-    setTimeout(() => {
+    getWeather();
+  }, [])
+
+  const getWeather = async () => {
+    setIsLoading(true);
+    try {
+      const weather = await WeatherAPI.get();
       dispatch({
-        type: WeatherActionTypes.SetLoading,
-        payload: false
-      })
-    }, 5000)
-  }, [])  
+        type: WeatherActionTypes.SetWeather,
+        payload: weather
+      });
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+    }
+  }
+
+  const setIsLoading = (isLoading: boolean) => {
+    dispatch({
+      type: WeatherActionTypes.SetLoading,
+      payload: isLoading
+    })
+  }
 
   return (
-    <WeatherContext.Provider value={{weatherState}}>
-      {weatherState.loading ? <Spinner/> :  props.children}
+    <WeatherContext.Provider value={{ weatherState }}>
+      {weatherState.loading ? <Spinner /> : props.children}
     </WeatherContext.Provider>
   )
 }

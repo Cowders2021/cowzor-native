@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 const apiClient = axios.create({
-    baseURL: 'our-api-base-url-endpoint'
+    baseURL: 'https://samples.openweathermap.org/data/2.5/'
 });
 
 apiClient.interceptors.request.use(

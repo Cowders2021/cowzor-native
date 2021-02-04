@@ -9,11 +9,13 @@ const Home = () => {
         history.push('/');
     }
 
+    const navigateToWeatherPage = () => history.push('/weather')
+
     return (
         <View style={styles.container}>
             <Text>Velkommen til Cowzor</Text>
-            <Text>hello</Text>
             <FkaButton label="Logout" onClick={onLogoutButtonClick}></FkaButton>
+            <FkaButton label="Gå til vær data" onClick={navigateToWeatherPage}></FkaButton>
         </View>
     )
 }

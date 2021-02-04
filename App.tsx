@@ -7,6 +7,7 @@ import ToastStore from './contexts/ToastContext';
 import WeatherStore from './contexts/WeatherContext';
 import Home from "./pages/Home";
 import Login from './pages/Login';
+import Weather from './pages/Weather';
 
 export default function App() {
 
@@ -16,9 +17,10 @@ export default function App() {
       <NativeRouter>
         <ToastStore>
           <Header />
+          <Route exact path="/" component={Login} />
           <WeatherStore>
-            <Route exact path="/" component={Login} />
             <Route path="/home" component={Home} />
+            <Route path="/weather" component={Weather} />
           </WeatherStore>
           <FkaToast />
         </ToastStore>
