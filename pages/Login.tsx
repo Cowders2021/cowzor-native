@@ -2,6 +2,7 @@ import React from "react"
 import { StyleSheet, View, Text } from "react-native"
 import { useHistory } from "react-router-native"
 import FkaButton from "../components/Button"
+import Container from "../components/Container"
 import { FKA_BASIC_DARK } from "../styles/Colors"
 
 const Login = () => {
@@ -10,20 +11,21 @@ const Login = () => {
         history.push('/home');
     }
     return (
-        <View style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.headline}>Felleskjøpet</Text>
-                <Text style={styles.text}>Vi i Felleskjøpet gjør alt vi kan for å hjelpe deg med vekstkontroll.</Text>
+        <Container>
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <Text style={styles.headline}>Felleskjøpet</Text>
+                    <Text style={styles.text}>Vi i Felleskjøpet gjør alt vi kan for å hjelpe deg med vekstkontroll.</Text>
+                </View>
+                <View style={styles.actionContainer}>
+                    <FkaButton label="Logg inn" onClick={onLoginButtonClick} />
+                    <Text>ELLER</Text>
+                    <FkaButton label="Registrer deg" onClick={onLoginButtonClick} />
+                </View>
             </View>
-            <View style={styles.actionContainer}>
-                <FkaButton label="Logg inn" onClick={onLoginButtonClick} />
-                <Text>ELLER</Text>
-                <FkaButton label="Registrer deg" onClick={onLoginButtonClick} />
-            </View>
-        </View>
+        </Container>
     )
 }
-
 
 const styles = StyleSheet.create({
     container: {

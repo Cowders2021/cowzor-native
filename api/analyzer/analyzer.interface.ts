@@ -3,5 +3,5 @@ interface IAnalyzerColor {
 }
 
 export interface IAnalyzer {
-    results: IAnalyzerColor
+    results: IAnalyzerColor[]
 }

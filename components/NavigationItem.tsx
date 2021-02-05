@@ -1,9 +1,9 @@
 import React from "react";
-import { StyleSheet, View, Text, Image, TouchableHighlight } from "react-native";
+import { StyleSheet, View, Text, Image } from "react-native";
 import { Link } from "react-router-native";
 import FkaCard from "./Card";
 
-type IconName = 'camera' | 'weather' | 'profile' | 'logout' | 'weed';
+type IconName = 'camera' | 'weather' | 'profile' | 'logout' | 'weed' | 'cow' | 'dashboard';
 interface Props {
     label: string;
     iconName: IconName;
@@ -16,6 +16,8 @@ const propsToAssets: Record<IconName, any> = {
     profile: require('../assets/tractor.png'),
     weather: require('../assets/weather/001-sun.png'),
     weed: require('../assets/farming/097-Weed.png'),
+    cow: require('../assets/farming/cow.png'),
+    dashboard: require('../assets/speedometer.png')
 };
 
 const NavigationItem = (props: Props) => {

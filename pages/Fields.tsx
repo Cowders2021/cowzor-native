@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, StyleSheet } from "react-native";
 import Container from "../components/Container";
 
 const Fields: React.FC = () => {
@@ -7,5 +7,9 @@ const Fields: React.FC = () => {
     <Container><Text>Her kommer oversikt over jordene dine</Text></Container>
   )
 }
+
+const styles = StyleSheet.create({
+
+});
 
 export default Fields;

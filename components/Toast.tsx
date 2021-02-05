@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from "react-native"
 import { useToastContext } from '../contexts/ToastContext';
-import { FKA_BASIC, FKA_BASIC_DARK, FKA_DANGER, FKA_PRIMARY, FKA_PRIMARY_FG } from '../styles/Colors';
+import { FKA_BASIC, FKA_BASIC_DARK, FKA_DANGER, FKA_PRIMARY } from '../styles/Colors';
 import FkaButton from './Button';
 
 export interface IToast {

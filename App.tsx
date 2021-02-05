@@ -6,6 +6,7 @@ import FkaToast from './components/Toast';
 import ToastStore from './contexts/ToastContext';
 import WeatherStore from './contexts/WeatherContext';
 import CameraPage from './pages/Camera';
+import Dashboard from './pages/Dashboard';
 import Fields from './pages/Fields';
 import Home from "./pages/Home";
 import Login from './pages/Login';
@@ -24,7 +25,9 @@ export default function App() {
             <Route path="/home" component={Home} />
             <Route path="/weather" component={Weather} />
             <Route path="/camera" component={CameraPage} />
-            <Route path="/fields" components={Fields}/>
+
+            <Route path="/dashboard" component={() => <Dashboard />} />
+            <Route path="/fields" component={Fields} />
           </WeatherStore>
           <FkaToast />
         </ToastStore>
