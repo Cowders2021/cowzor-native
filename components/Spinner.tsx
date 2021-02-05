@@ -6,7 +6,7 @@ export const Spinner: React.FC = () => {
   return (
     <View style={styles.container}>
       <Image source={require('../assets/loading_tractor.gif')} style={styles.spinner} />
-      <Text style={styles.text}>Appen laster...</Text>
+      <Text style={styles.text}>Vekstkontroll laster...</Text>
     </View>
   )
 }
@@ -20,7 +20,9 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: FKA_YELLOW
+    color: FKA_YELLOW,
+    textTransform: 'uppercase',
+    fontWeight: '700'
   },
 
   spinner: {

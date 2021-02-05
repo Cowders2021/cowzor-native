@@ -8,3 +8,5 @@ export const FKA_BASIC = '#FFF';
 export const FKA_BASIC_DARK = '#000'
 
 export const FKA_DANGER = 'red';
+
+export const FKA_BACKGROUND = '#FCFCFC'

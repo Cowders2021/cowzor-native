@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { FKA_BACKGROUND } from '../styles/Colors';
 
 const Container: React.FC = (props) => {
     return (
@@ -11,7 +12,9 @@ const Container: React.FC = (props) => {
 
 const styles = StyleSheet.create({
     container: {
-        padding: 15
+        padding: 15,
+        backgroundColor: FKA_BACKGROUND,
+        minHeight: '100%'
     }
 })
 

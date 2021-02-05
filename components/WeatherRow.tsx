@@ -24,7 +24,7 @@ const WeatherRow = (props: IWeatherRow) => {
                         </View>
                         <View>
                             <Text style={styles.label}>Temp</Text>
-                            <Text>{props.temp}</Text>
+                            <Text>{Math.floor(props.temp - 273)}</Text>
                         </View>
                         <View>
                             <Text style={styles.label}>Vind</Text>

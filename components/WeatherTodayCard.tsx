@@ -13,7 +13,7 @@ const WeatherTodayCard = (props: WeatherTodayCard) => {
         <View style={styles.spaceBottom}>
             <FkaCard>
                 <View style={styles.container}>
-                    <Text style={styles.temperature}>{props.temp} {'\u00b0'}</Text>
+                    <Text style={styles.temperature}>{Math.floor(props.temp - 273)} {'\u00b0'}</Text>
                     <View>
                         <View>{WeatherIcon(props.type)}</View>
                     </View>

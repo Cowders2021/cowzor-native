@@ -2,7 +2,7 @@ import React from "react"
 import { StyleSheet, View, Text } from "react-native"
 import { useHistory } from "react-router-native"
 import FkaButton from "../components/Button"
-import { FKA_PRIMARY, FKA_YELLOW } from "../styles/Colors"
+import { FKA_BASIC_DARK } from "../styles/Colors"
 
 const Login = () => {
     const history = useHistory();
@@ -12,11 +12,13 @@ const Login = () => {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.headline}>Login</Text>
-                <Text>Please login or signup to get started!</Text>
+                <Text style={styles.headline}>Felleskjøpet</Text>
+                <Text style={styles.text}>Vi i Felleskjøpet gjør alt vi kan for å hjelpe deg med vekstkontroll.</Text>
             </View>
-            <View>
-                <FkaButton label="Login" onClick={onLoginButtonClick} />
+            <View style={styles.actionContainer}>
+                <FkaButton label="Logg inn" onClick={onLoginButtonClick} />
+                <Text>ELLER</Text>
+                <FkaButton label="Registrer deg" onClick={onLoginButtonClick} />
             </View>
         </View>
     )
@@ -25,22 +27,27 @@ const Login = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: FKA_PRIMARY,
-        color: FKA_YELLOW,
         padding: 20
     },
 
     header: {
         paddingTop: 20,
-        alignItems: 'center'
+    },
+
+    text: {
+        marginTop: 10,
+        marginBottom: 40
     },
 
     headline: {
-        color: FKA_YELLOW,
-        fontSize: 50
+        fontSize: 30,
+        fontWeight: '700',
+        color: FKA_BASIC_DARK
+    },
+
+    actionContainer: {
+        alignItems: 'center',
+        marginTop: 100
     }
 })
 

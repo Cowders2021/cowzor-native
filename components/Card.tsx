@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import { FKA_BASIC } from '../styles/Colors';
 
 const FkaCard: React.FC = (props) => {
     return (
-        <View style={styles.card}>
+        <View style={styles.card} needsOffscreenAlphaCompositing={false}>
             { props.children}
         </View>
     )
@@ -11,9 +12,9 @@ const FkaCard: React.FC = (props) => {
 
 const styles = StyleSheet.create({
     card: {
-        borderWidth: 1,
         borderRadius: 10,
-        borderColor: '#ddd'
+        elevation: 1,
+        backgroundColor: FKA_BASIC
     }
 })
 

@@ -1,34 +1,39 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { useHistory } from "react-router-native";
-import FkaButton from "../components/Button";
+import Container from "../components/Container";
+import NavigationItem from "../components/NavigationItem";
 
 const Home = () => {
-    const history = useHistory();
-    const onLogoutButtonClick = () => {
-        history.push('/');
-    }
-
-    const navigateToWeatherPage = () => history.push('/weather')
-    const navigateToCameraPage = () => history.push('/camera')
-
     return (
-        <View style={styles.container}>
-            <Text>Velkommen til Cowzor</Text>
-            <FkaButton label="Logout" onClick={onLogoutButtonClick}></FkaButton>
-            <FkaButton label="Gå til vær data" onClick={navigateToWeatherPage}></FkaButton>
-            <FkaButton label="Gå til kamera" onClick={navigateToCameraPage}></FkaButton>
-        </View>
+        <Container>
+            <Text style={styles.headline}>Hei Ola!</Text>
+            <Text style={styles.text}>Velkommen tilbake! Hva ønsker du å gjøre i dag?</Text>
+            <View style={styles.menuContainer}>
+                <NavigationItem label="Værmelding" iconName="weather" onPressUrl="/weather" />
+                <NavigationItem label="Kamera" iconName="camera" onPressUrl="/camera" />
+                <NavigationItem label="Min profil" iconName="profile" onPressUrl="/home" />
+                <NavigationItem label="Logg ut" iconName="logout" onPressUrl="/" />
+            </View>
+        </Container>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
+    headline: {
+        fontSize: 35,
+        fontWeight: '700',
+        marginBottom: 10
     },
+    menuContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: "space-between",
+        flexWrap: 'wrap'
+    },
+    text: {
+        fontSize: 18,
+        marginBottom: 30
+    }
 });
 
 export default Home;
