@@ -1042,7 +1042,7 @@
     mv "~2"
     safe-json-stringify "~1"
 
-"@expo/config-plugins@1.0.18":
+"@expo/config-plugins@1.0.18", "@expo/config-plugins@~1.0.13":
   version "1.0.18"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-1.0.18.tgz#f0f7d36316d60ea67b4cc6394bffef6d6904345d"
   integrity sha512-8Ey+22cEAOxK+SBJY+OazaLsPyL5FXdsykfBg/QQJE2Y/DTFebUVlr5bQyeqavbASDvmDxg3Fd71A8Se8+qT1g==
@@ -1790,6 +1790,14 @@
   dependencies:
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
+
+"@koale/useworker@^3.2.1":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@koale/useworker/-/useworker-3.4.0.tgz#773ac623212bfaed377ff5e6cd44240ed52e40ff"
+  integrity sha512-cDGItsqyNd6SlaO+9XmDupANNNl4omjisdLcLbITdcKktlK+wpW1HwbnVjHiXBtHXQsKxxE832qVMlE/q9lmXg==
+  dependencies:
+    dequal "^1.0.0"
+    isoworker "^0.1.1"
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
@@ -4760,6 +4768,11 @@ deprecated-decorator@^0.1.6:
   resolved "https://registry.yarnpkg.com/deprecated-decorator/-/deprecated-decorator-0.1.6.tgz#00966317b7a12fe92f3cc831f7583af329b86c37"
   integrity sha1-AJZjF7ehL+kvPMgx91g68ym4bDc=
 
+dequal@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/dequal/-/dequal-1.0.1.tgz#dbbf9795ec626e9da8bd68782f4add1d23700d8b"
+  integrity sha512-Fx8jxibzkJX2aJgyfSdLhr9tlRoTnHKrRJuu2XHlAgKioN2j19/Bcbe0d4mFXYZ3+wpE2KVobUVTfDutcD17xQ==
+
 des.js@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/des.js/-/des.js-1.0.1.tgz#5382142e1bdc53f85d86d53e5f4aa7deb91e0843"
@@ -5339,6 +5352,16 @@ expo-asset@~8.2.1:
     md5-file "^3.2.3"
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
+
+expo-camera@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/expo-camera/-/expo-camera-10.0.0.tgz#a48e944178ff4f12f0a415d03465c74b8fd4d8e4"
+  integrity sha512-3Z6FCRY3PGOSXhVrsBC1Jp4qDdC3m0FED1LIp32PPqDjy3ZKdagRCXauRy6ec7wqa9NLWt9gQ8GXLO6IBWgoZA==
+  dependencies:
+    "@expo/config-plugins" "~1.0.13"
+    "@koale/useworker" "^3.2.1"
+    invariant "2.2.4"
+    lodash "^4.6.0"
 
 expo-cli@^4.1.6:
   version "4.1.6"
@@ -6933,7 +6956,7 @@ internal-ip@4.3.0, internal-ip@^4.3.0:
     default-gateway "^4.2.0"
     ipaddr.js "^1.9.0"
 
-invariant@^2.2.2, invariant@^2.2.4:
+invariant@2.2.4, invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -7427,6 +7450,11 @@ isomorphic-fetch@^2.1.1:
   dependencies:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
+
+isoworker@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/isoworker/-/isoworker-0.1.1.tgz#99e68e08c18300685695c5187c4adbffa14d254b"
+  integrity sha512-25hcgGZlLh3bxF6/YNS5aw/dw2H7cna/30EvKhq6Hwwsd7gzkML6oo9XrBTpExihBVJX/8RanSXR6M4Ox5dQWA==
 
 isstream@~0.1.2:
   version "0.1.2"
