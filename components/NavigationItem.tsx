@@ -3,30 +3,24 @@ import { StyleSheet, View, Text, Image, TouchableHighlight } from "react-native"
 import { useHistory } from "react-router-native";
 import FkaCard from "./Card";
 
+type IconName = 'camera' | 'weather' | 'profile' | 'logout' | 'weed';
 interface Props {
     label: string;
-    iconName: 'camera' | 'weather' | 'profile' | 'logout';
+    iconName: IconName;
     onPressUrl: string
 }
+
+const propsToAssets : Record<IconName, any> = {
+    camera: require('../assets/camera.png'),
+    logout: require('../assets/exit.png'),
+    profile: require('../assets/tractor.png'),
+    weather: require('../assets/weather/001-sun.png'),
+    weed: require('../assets/farming/097-Weed.png'),
+};
 
 const NavigationItem = (props: Props) => {
 
     const history = useHistory();
-    const getIcon = (iconName: string) => {
-        switch (iconName) {
-            case 'camera':
-                return <Image source={require('../assets/camera.png')} style={styles.icon} />
-            case 'weather':
-                return <Image source={require('../assets/weather/001-sun.png')} style={styles.icon} />
-            case 'profile':
-                return <Image source={require('../assets/tractor.png')} style={styles.icon} />
-            case 'logout':
-                return <Image source={require('../assets/exit.png')} style={styles.icon} />
-            default:
-                return <View></View>
-        }
-    }
-
     const navigateTo = (url: string) => history.push(url)
 
     return (
@@ -34,7 +28,7 @@ const NavigationItem = (props: Props) => {
             <View>
                 <FkaCard>
                     <View style={styles.boxInnerContainer}>
-                        <View>{getIcon(props.iconName)}</View>
+                        <Image source={propsToAssets[props.iconName]} style={styles.icon} />
                         <Text style={styles.label}>{props.label}</Text>
                     </View>
                 </FkaCard>
