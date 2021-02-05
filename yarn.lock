@@ -1042,7 +1042,7 @@
     mv "~2"
     safe-json-stringify "~1"
 
-"@expo/config-plugins@1.0.18":
+"@expo/config-plugins@1.0.18", "@expo/config-plugins@~1.0.13":
   version "1.0.18"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-1.0.18.tgz#f0f7d36316d60ea67b4cc6394bffef6d6904345d"
   integrity sha512-8Ey+22cEAOxK+SBJY+OazaLsPyL5FXdsykfBg/QQJE2Y/DTFebUVlr5bQyeqavbASDvmDxg3Fd71A8Se8+qT1g==
@@ -1791,6 +1791,14 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
+"@koale/useworker@^3.2.1":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@koale/useworker/-/useworker-3.4.0.tgz#773ac623212bfaed377ff5e6cd44240ed52e40ff"
+  integrity sha512-cDGItsqyNd6SlaO+9XmDupANNNl4omjisdLcLbITdcKktlK+wpW1HwbnVjHiXBtHXQsKxxE832qVMlE/q9lmXg==
+  dependencies:
+    dequal "^1.0.0"
+    isoworker "^0.1.1"
+
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz#d4b3549a5db5de2683e0c1071ab4f140904bbf69"
@@ -2211,6 +2219,11 @@
   integrity sha512-ItatOrnXDMAYpv6G8UCk2VhbYVTjZT9aorLtA/OzDN9XJ2GKcfam68jutoAcILdRjsRUO8qb7AmyObF77Q8QFw==
   dependencies:
     "@types/react" "^16"
+
+"@types/react-native-base64@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-base64/-/react-native-base64-0.1.0.tgz#e26b579c34f9840f43b5e97ddb5200c04e84fc3a"
+  integrity sha512-i93+Zir+aL65XYo8FYEJj/jJXucqoNnKZVqWzZtjoPuXQ39orYDlGL2/2djUbiB8efYa9TXPfE70aCXc5CEk+g==
 
 "@types/react-native@~0.63.2":
   version "0.63.48"
@@ -4760,6 +4773,11 @@ deprecated-decorator@^0.1.6:
   resolved "https://registry.yarnpkg.com/deprecated-decorator/-/deprecated-decorator-0.1.6.tgz#00966317b7a12fe92f3cc831f7583af329b86c37"
   integrity sha1-AJZjF7ehL+kvPMgx91g68ym4bDc=
 
+dequal@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/dequal/-/dequal-1.0.1.tgz#dbbf9795ec626e9da8bd68782f4add1d23700d8b"
+  integrity sha512-Fx8jxibzkJX2aJgyfSdLhr9tlRoTnHKrRJuu2XHlAgKioN2j19/Bcbe0d4mFXYZ3+wpE2KVobUVTfDutcD17xQ==
+
 des.js@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/des.js/-/des.js-1.0.1.tgz#5382142e1bdc53f85d86d53e5f4aa7deb91e0843"
@@ -5340,6 +5358,16 @@ expo-asset@~8.2.1:
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
 
+expo-camera@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/expo-camera/-/expo-camera-10.0.0.tgz#a48e944178ff4f12f0a415d03465c74b8fd4d8e4"
+  integrity sha512-3Z6FCRY3PGOSXhVrsBC1Jp4qDdC3m0FED1LIp32PPqDjy3ZKdagRCXauRy6ec7wqa9NLWt9gQ8GXLO6IBWgoZA==
+  dependencies:
+    "@expo/config-plugins" "~1.0.13"
+    "@koale/useworker" "^3.2.1"
+    invariant "2.2.4"
+    lodash "^4.6.0"
+
 expo-cli@^4.1.6:
   version "4.1.6"
   resolved "https://registry.yarnpkg.com/expo-cli/-/expo-cli-4.1.6.tgz#027a44d0c2f56e4b0d9251d78082fd23fb1e7894"
@@ -5433,6 +5461,11 @@ expo-font@~8.4.0:
   dependencies:
     fbjs "1.0.0"
     fontfaceobserver "^2.1.0"
+
+expo-image-manipulator@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/expo-image-manipulator/-/expo-image-manipulator-9.0.0.tgz#0b6ad350b79e40a44164b6333e806a2ef6fc9708"
+  integrity sha512-hziIcUONz7JtsonEehuYvXk8xCSGDHR6A4ynZcUTbZQCzxWYu7Xq2wahREz/DBdu0vz0LBw38wFLuSpfgaFojQ==
 
 expo-keep-awake@~8.4.0:
   version "8.4.0"
@@ -6933,7 +6966,7 @@ internal-ip@4.3.0, internal-ip@^4.3.0:
     default-gateway "^4.2.0"
     ipaddr.js "^1.9.0"
 
-invariant@^2.2.2, invariant@^2.2.4:
+invariant@2.2.4, invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -7427,6 +7460,11 @@ isomorphic-fetch@^2.1.1:
   dependencies:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
+
+isoworker@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/isoworker/-/isoworker-0.1.1.tgz#99e68e08c18300685695c5187c4adbffa14d254b"
+  integrity sha512-25hcgGZlLh3bxF6/YNS5aw/dw2H7cna/30EvKhq6Hwwsd7gzkML6oo9XrBTpExihBVJX/8RanSXR6M4Ox5dQWA==
 
 isstream@~0.1.2:
   version "0.1.2"
@@ -10614,6 +10652,11 @@ react-is@^17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
+
+react-native-base64@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-base64/-/react-native-base64-0.2.1.tgz#3d0e73a649c4c0129f7b7695d3912456aebae847"
+  integrity sha512-eHgt/MA8y5ZF0aHfZ1aTPcIkDWxza9AaEk4GcpIX+ZYfZ04RcaNahO+527KR7J44/mD3efYfM23O2C1N44ByWA==
 
 react-native-safe-area-context@3.1.9:
   version "3.1.9"
