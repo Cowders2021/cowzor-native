@@ -13,6 +13,7 @@ const Home = () => {
                 <NavigationItem label="Kamera" iconName="camera" onPressUrl="/camera" />
                 <NavigationItem label="Min profil" iconName="profile" onPressUrl="/home" />
                 <NavigationItem label="Logg ut" iconName="logout" onPressUrl="/" />
+                <NavigationItem label="Mine jorder" iconName="weed" onPressUrl="/" />
             </View>
         </Container>
     )
