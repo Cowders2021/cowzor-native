@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, TouchableHighlight } from "react-native";
-import { useHistory } from "react-router-native";
+import { Link } from "react-router-native";
 import FkaCard from "./Card";
 
 type IconName = 'camera' | 'weather' | 'profile' | 'logout' | 'weed';
@@ -10,7 +10,7 @@ interface Props {
     onPressUrl: string
 }
 
-const propsToAssets : Record<IconName, any> = {
+const propsToAssets: Record<IconName, any> = {
     camera: require('../assets/camera.png'),
     logout: require('../assets/exit.png'),
     profile: require('../assets/tractor.png'),
@@ -19,21 +19,17 @@ const propsToAssets : Record<IconName, any> = {
 };
 
 const NavigationItem = (props: Props) => {
-
-    const history = useHistory();
-    const navigateTo = (url: string) => history.push(url)
-
     return (
-        <TouchableHighlight style={styles.box} onPress={() => navigateTo(props.iconName)}>
-            <View>
+        <View style={styles.box}>
+            <Link to={props.onPressUrl}>
                 <FkaCard>
                     <View style={styles.boxInnerContainer}>
                         <Image source={propsToAssets[props.iconName]} style={styles.icon} />
                         <Text style={styles.label}>{props.label}</Text>
                     </View>
                 </FkaCard>
-            </View>
-        </TouchableHighlight>
+            </Link>
+        </View>
     )
 }
 
