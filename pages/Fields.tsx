@@ -1,6 +1,10 @@
+import React from "react";
+import { Text } from "react-native";
+import Container from "../components/Container";
+
 const Fields: React.FC = () => {
   return (
-    <div>Her kommer overiskt over jordene dine</div>
+    <Container><Text>Her kommer oversikt over jordene dine</Text></Container>
   )
 }
 
