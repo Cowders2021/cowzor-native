@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { FKA_PRIMARY } from '../styles/Colors';
 import FkaCard from './Card';
+import SpaceBottom from './SpaceBottom';
 import WeatherIcon from './WeatherIcon';
 
 export interface IWeatherRow {
@@ -14,7 +15,7 @@ export interface IWeatherRow {
 
 const WeatherRow = (props: IWeatherRow) => {
     return (
-        <View style={styles.spaceBottom}>
+        <SpaceBottom>
             <FkaCard>
                 <View>
                     <Text style={styles.date}>{props.date}</Text>
@@ -37,7 +38,7 @@ const WeatherRow = (props: IWeatherRow) => {
                     </View>
                 </View>
             </FkaCard>
-        </View>
+        </SpaceBottom>
     )
 }
 
