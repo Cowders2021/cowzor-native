@@ -14,7 +14,7 @@ const Menu = () => {
                 <NavigationItem label="Værmelding" iconName="weather" onPressUrl="/weather" />
                 <NavigationItem label="Vekstkontroll" iconName="radish" onPressUrl="/camera" />
                 <NavigationItem label="Mine jorder" iconName="weed" onPressUrl="/fields" />
-                <NavigationItem label="Cownter" iconName="cow" onPressUrl="/counter" />
+                <NavigationItem label="Cownter" iconName="cow" onPressUrl="/cownter" />
                 <NavigationItem label="Logg ut" iconName="logout" onPressUrl="/" />
             </View>
         </FkaContainer>
