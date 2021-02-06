@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { FKA_BASIC } from '../styles/Colors';
+import { FKA_BASIC } from '../../styles/Colors';
 
 const FkaCard: React.FC = (props) => {
     return (

@@ -3,6 +3,7 @@ import React from 'react';
 import { NativeRouter, Route } from "react-router-native";
 import Header from './components/Header';
 import FkaToast from './components/Toast';
+import IssueStore from './contexts/IssueContext';
 import ToastStore from './contexts/ToastContext';
 import WeatherStore from './contexts/WeatherContext';
 import CameraPage from './pages/Camera';
@@ -25,9 +26,10 @@ export default function App() {
             <Route path="/home" component={Home} />
             <Route path="/weather" component={Weather} />
             <Route path="/camera" component={CameraPage} />
-
             <Route path="/dashboard" component={() => <Dashboard />} />
-            <Route path="/fields" component={Fields} />
+            <IssueStore>
+              <Route path="/fields" component={Fields} />
+            </IssueStore>
           </WeatherStore>
           <FkaToast />
         </ToastStore>

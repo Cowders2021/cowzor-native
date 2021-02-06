@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import FkaCard from './Card';
+import FkaCard from './ui/Card';
 import WeatherIcon from './WeatherIcon';
 
 interface WeatherTodayCard {

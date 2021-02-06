@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
-import Container from "../components/Container";
+import Container from "../components/ui/Container";
 import NavigationItem from "../components/NavigationItem";
 
 const Home = () => {

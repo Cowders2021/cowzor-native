@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { FKA_PRIMARY } from '../styles/Colors';
-import FkaCard from './Card';
-import SpaceBottom from './SpaceBottom';
+import FkaCard from './ui/Card';
+import SpaceBottom from './ui/SpaceBottom';
 import WeatherIcon from './WeatherIcon';
 
 export interface IWeatherRow {

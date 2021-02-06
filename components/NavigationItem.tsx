@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import { Link } from "react-router-native";
-import FkaCard from "./Card";
+import FkaCard from "./ui/Card";
 
 type IconName = 'camera' | 'weather' | 'profile' | 'logout' | 'weed' | 'cow' | 'dashboard';
 interface Props {

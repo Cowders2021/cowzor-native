@@ -2,7 +2,7 @@ import React from "react"
 import { StyleSheet, View, Text } from "react-native"
 import { useHistory } from "react-router-native"
 import FkaButton from "../components/Button"
-import Container from "../components/Container"
+import Container from "../components/ui/Container"
 import { FKA_BASIC_DARK } from "../styles/Colors"
 
 const Login = () => {

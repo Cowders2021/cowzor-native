@@ -3,7 +3,7 @@ import { createContext, useReducer } from "react"
 import { weatherReducer } from "./reducers/WeatherReducer"
 import { WeatherActionTypes } from "./actions/WeatherActions";
 import { Spinner } from "../components/Spinner";
-import { WeatherAPI } from "../api/weather/weatherApi";
+import { WeatherAPI } from "../api/weather/weather.api";
 import { IWeather } from "../api/weather/weather.interface";
 
 export type WeatherState = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { FKA_BACKGROUND } from '../styles/Colors';
+import { FKA_BACKGROUND } from '../../styles/Colors';
 
 const Container: React.FC = (props) => {
     return (

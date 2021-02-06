@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import Container from "../components/Container";
+import Container from "../components/ui/Container";
 
 const Dashboard = () => {
     return (

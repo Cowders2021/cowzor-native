@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, FlatList, StyleSheet } from 'react-native';
 import { IWeather, List } from '../api/weather/weather.interface';
-import Container from '../components/Container';
+import Container from '../components/ui/Container';
 import WeatherRow, { IWeatherRow } from '../components/WeatherRow';
 import WeatherTodayCard from '../components/WeatherTodayCard';
 import { useWeatherContext } from '../contexts/WeatherContext';
