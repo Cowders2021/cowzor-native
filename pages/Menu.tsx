@@ -12,7 +12,7 @@ const Menu = () => {
             <View style={styles.menuContainer}>
                 <NavigationItem label="Dashboard" iconName="dashboard" onPressUrl="/dashboard" />
                 <NavigationItem label="Værmelding" iconName="weather" onPressUrl="/weather" />
-                <NavigationItem label="Kamera" iconName="camera" onPressUrl="/camera" />
+                <NavigationItem label="Vekstkontroll" iconName="radish" onPressUrl="/camera" />
                 <NavigationItem label="Mine jorder" iconName="weed" onPressUrl="/fields" />
                 <NavigationItem label="Cownter" iconName="cow" onPressUrl="/counter" />
                 <NavigationItem label="Logg ut" iconName="logout" onPressUrl="/" />

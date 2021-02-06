@@ -7,5 +7,5 @@ const client = httpClient('https://apim-cowders.azure-api.net', {
 });
 
 export const AnalyzerAPI = {
-    post: async (base64EncodedImage: string) => await (await client.post('/analyzecolors', { data: base64EncodedImage })).data as IAnalyzer
+    post: async (base64EncodedImage: string) => await (await client.post('/analyzecolors', { data: base64EncodedImage })).data as IAnalyzer[]
 }

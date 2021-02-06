@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image } from "react-native";
 import { Link } from "react-router-native";
 import FkaCard from "./ui/FkaCard";
 
-type IconName = 'camera' | 'weather' | 'profile' | 'logout' | 'weed' | 'cow' | 'dashboard';
+type IconName = 'radish' | 'weather' | 'profile' | 'logout' | 'weed' | 'cow' | 'dashboard';
 interface Props {
     label: string;
     iconName: IconName;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const propsToAssets: Record<IconName, any> = {
-    camera: require('../assets/camera.png'),
+    radish: require('../assets/farming/025-radish.png'),
     logout: require('../assets/exit.png'),
     profile: require('../assets/tractor.png'),
     weather: require('../assets/weather/001-sun.png'),

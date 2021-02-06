@@ -1,13 +1,12 @@
 import { AnalyzerAction, AnalyzerActionTypes } from "../actions/AnalyzerAction"
+import { AnalyzerState } from "../AnalyzerContext"
 
-// The time is 02:31... David continue tomorrow morning.
-
-export const analyzerReducer = (state: any, action: AnalyzerAction): any => {
+export const analyzerReducer = (state: AnalyzerState, action: AnalyzerAction): AnalyzerState => {
     switch (action.type) {
         case AnalyzerActionTypes.SetResults:
             return {
                 ...state,
-                results: action.payload
+                isWeed: action.payload
             }
         default:
             return {

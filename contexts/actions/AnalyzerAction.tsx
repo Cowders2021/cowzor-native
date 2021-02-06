@@ -1,12 +1,10 @@
-import { IAnalyzer } from "../../api/analyzer/analyzer.interface";
-
 export enum AnalyzerActionTypes {
     SetResults = 'SET_RESULTS'
 }
 
 type SetResults = {
     readonly type: AnalyzerActionTypes.SetResults,
-    readonly payload: IAnalyzer[]
+    readonly payload: boolean
 }
 
 export type AnalyzerAction = SetResults
