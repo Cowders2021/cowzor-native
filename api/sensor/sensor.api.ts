@@ -1,7 +1,9 @@
 import { httpClient } from "../config";
+import { ISensor } from "./sensor.interface";
 
-const client = httpClient('https://samples.openweathermap.org/data/2.5/')
+const client = httpClient('https://cowderspictures.azurewebsites.net/api')
 
 export const SensorAPI = {
-    get: async () => await (await client.get('forecast?id=524901&appid=b1b15e88fa797225412429c1c50c122a1')).data as any
+    get: async (id: number) => await (await client.get(`/sensor/${id}`)).data as ISensor,
+    getAll: async (minute: number) => await (await client.get(`/sensors/${minute}`)).data as ISensor[],
 }
