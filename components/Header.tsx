@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text, TouchableHighlight } from 'react-native';
 import { useHistory } from 'react-router-native';
-import { FKA_PRIMARY, FKA_PRIMARY_FG } from '../styles/Colors';
+import { FKA_PRIMARY, FKA_PRIMARY_FG, FKA_YELLOW } from '../styles/Colors';
 
 const Header = () => {
     const history = useHistory();
@@ -35,7 +35,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         backgroundColor: FKA_PRIMARY,
         padding: 15,
-        paddingTop: 50
+        paddingTop: 50,
+        borderBottomColor: FKA_YELLOW,
+        borderBottomWidth: 8
     },
     innerContainer: {
         display: 'flex',

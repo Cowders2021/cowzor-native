@@ -8,6 +8,11 @@ export const analyzerReducer = (state: AnalyzerState, action: AnalyzerAction): A
                 ...state,
                 isWeed: action.payload
             }
+        case AnalyzerActionTypes.SetAnalyzed:
+            return {
+                ...state,
+                isAnalyzed: action.payload
+            }
         default:
             return {
                 ...state

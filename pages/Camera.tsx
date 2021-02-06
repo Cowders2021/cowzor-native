@@ -9,13 +9,19 @@ import FkaHeadline from '../components/ui/FkaHeadline';
 import FkaPadding from '../components/ui/FkaPadding';
 import FkaSpaceBottom from '../components/ui/FkaSpaceBottom';
 import { useIAnalyzerContext } from '../contexts/AnalyzerContext';
+import { Spinner } from '../components/Spinner';
+import FkaCard from '../components/ui/FkaCard';
+import { useHistory } from 'react-router';
 
 
 const CameraPage = () => {
     const [hasPermission, setHasPermission] = useState<boolean>(false);
     const [cameraRef, setCameraRef] = useState<Camera | null>();
-    const [showCamera, setShowCamera] = useState<boolean>(false)
+    const [showCamera, setShowCamera] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const { analyzerState, analyzeImageResult } = useIAnalyzerContext();
+
+    const history = useHistory();
 
     useEffect(() => {
         (async () => {
@@ -29,6 +35,10 @@ const CameraPage = () => {
     }
     if (hasPermission === false) {
         return <Text>Har ikke tilgang til kamera</Text>;
+    }
+
+    const navigateTo = (url: string) => {
+        history.push(url);
     }
 
     const compressAndResizeImage = async (photo: any): Promise<ImageManipulator.ImageResult> => {
@@ -46,7 +56,6 @@ const CameraPage = () => {
         try {
             const response = await AnalyzerAPI.post(base64Image);
             analyzeImageResult(response);
-            setShowCamera(false)
         } catch (error) {
             console.warn(error);
         }
@@ -54,9 +63,17 @@ const CameraPage = () => {
 
     const takePhoto = async () => {
         if (cameraRef) {
-            const photo = await cameraRef.takePictureAsync({ quality: 0, base64: true });
-            const resizedImage = await compressAndResizeImage(photo);
-            await uploadImage(resizedImage.base64);
+            setIsLoading(true)
+            try {
+                const photo = await cameraRef.takePictureAsync({ quality: 0, base64: true });
+                setShowCamera(false);
+                const resizedImage = await compressAndResizeImage(photo);
+                await uploadImage(resizedImage.base64);
+                setIsLoading(false)
+            } catch {
+                setIsLoading(false)
+            }
+
         }
     }
 
@@ -71,17 +88,43 @@ const CameraPage = () => {
                     </Camera>
                 ) : (
                         <FkaPadding>
-                            <FkaHeadline>Vekstkontroll</FkaHeadline>
-                            <FkaSpaceBottom>
-                                <Text>Det er viktig å påse at det ikke finnes ugress i åkeren. Det er ikke alltid like lett å vite hva som er farlig ugress og ikke.</Text>
-                            </FkaSpaceBottom>
-                            <FkaButton onClick={() => setShowCamera(true)} label="Start Vekstkontroll"></FkaButton>
                             {
-                                analyzerState.isWeed && (
-                                    <FkaSpaceBottom>
-                                        <FkaHeadline>Mine resultater</FkaHeadline>
-                                        <Text>Basert på bildet av din åker er det {analyzerState.isWeed ? '' : 'ikke'} ugress i din åker</Text>
-                                    </FkaSpaceBottom>
+                                isLoading ? <View style={styles.spinnerContainer}><Spinner /></View> : (
+                                    <>
+                                        <FkaSpaceBottom>
+                                            <FkaHeadline>Vekstkontroll</FkaHeadline>
+                                            <Text>Det er viktig å påse at det ikke finnes ugress i åkeren. Det er ikke alltid like lett å vite hva som er farlig ugress og ikke.</Text>
+                                        </FkaSpaceBottom>
+                                        {
+                                            analyzerState.isAnalyzed && (
+                                                <>
+                                                    <FkaSpaceBottom>
+                                                        <FkaHeadline size="medium">Mine resultater</FkaHeadline>
+                                                        <Text>Basert på bildet av din åker er det {analyzerState.isWeed ? '' : 'ikke'} ugress i din åker</Text>
+                                                    </FkaSpaceBottom>
+                                                    {
+                                                        analyzerState.isWeed && (
+                                                            <FkaSpaceBottom>
+                                                                <FkaCard>
+                                                                    <FkaPadding>
+                                                                        <FkaHeadline size="medium">Anbefalinger</FkaHeadline>
+                                                                        <FkaSpaceBottom>
+                                                                            <Text>
+                                                                                For å unngå slike uønsket vekster som nå er funnet, anbefaler Felleskjøpet at du sprøyter åkeren.
+                                                                                For at du ikke skal glemme dette anbefaler vi at du oppretter et problemnotat. på din
+                                                                        </Text>
+                                                                        </FkaSpaceBottom>
+                                                                        <FkaButton label="Opprett problemnotat" onClick={() => navigateTo('./create-issue')}></FkaButton>
+                                                                    </FkaPadding>
+                                                                </FkaCard>
+                                                            </FkaSpaceBottom>
+                                                        )
+                                                    }
+                                                </>
+                                            )
+                                        }
+                                        <FkaButton onClick={() => setShowCamera(true)} label="Start Vekstkontroll"></FkaButton>
+                                    </>
                                 )
                             }
                         </FkaPadding>
@@ -114,6 +157,9 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: FKA_BASIC,
     },
+    spinnerContainer: {
+        marginTop: 100
+    }
 });
 
 export default CameraPage;

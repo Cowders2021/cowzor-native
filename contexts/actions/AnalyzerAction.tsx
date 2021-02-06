@@ -1,5 +1,6 @@
 export enum AnalyzerActionTypes {
-    SetResults = 'SET_RESULTS'
+    SetResults = 'SET_RESULTS',
+    SetAnalyzed = 'SET_IS_ANALYZED'
 }
 
 type SetResults = {
@@ -7,4 +8,9 @@ type SetResults = {
     readonly payload: boolean
 }
 
-export type AnalyzerAction = SetResults
+type SetAnalyzed = {
+    readonly type: AnalyzerActionTypes.SetAnalyzed,
+    readonly payload: boolean
+}
+
+export type AnalyzerAction = SetResults | SetAnalyzed

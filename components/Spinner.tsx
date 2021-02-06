@@ -2,11 +2,21 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { FKA_PRIMARY, FKA_YELLOW } from '../styles/Colors';
 
-export const Spinner: React.FC = () => {
+interface Props {
+  text?: string
+}
+
+export const Spinner = (props: Props) => {
   return (
     <View style={styles.container}>
       <Image source={require('../assets/loading_tractor.gif')} style={styles.spinner} />
-      <Text style={styles.text}>Vekstkontroll laster...</Text>
+      {
+        props.text?.length ? (
+          <Text style={styles.text}>{props.text}</Text>
+        ) : (
+            <Text style={styles.text}>Vekstkontroll laster...</Text>
+          )
+      }
     </View>
   )
 }
