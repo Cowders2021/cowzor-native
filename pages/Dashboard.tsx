@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SensorAPI } from '../api/sensor/sensor.api';
 import { ISensor } from '../api/sensor/sensor.interface';
-import { IWeather, List } from '../api/weather/weather.interface';
+import { IWeather } from '../api/weather/weather.interface';
 import { Spinner } from '../components/Spinner';
 import FkaCard from '../components/ui/FkaCard';
 import FkaContainer from "../components/ui/FkaContainer";
@@ -13,12 +13,6 @@ import FkaSpaceBottom from '../components/ui/FkaSpaceBottom';
 import WeatherTodayCard from '../components/WeatherTodayCard';
 import { useWeatherContext } from '../contexts/WeatherContext';
 import { FKA_PRIMARY } from '../styles/Colors';
-
-interface field {
-    name: string;
-    id: number;
-    sensor: ISensor
-}
 
 const fields = [
     {
