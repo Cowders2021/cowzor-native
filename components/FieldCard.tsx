@@ -1,24 +1,24 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { IIssue } from '../api/issue/issue.interface'
-import FkaCard from "./ui/Card"
+import FkaCard from "./ui/FkaCard"
 import FkaTitle from './ui/FkaTitle'
-import Padding from './ui/Padding'
-import SpaceBottom from './ui/SpaceBottom'
+import FkaPadding from './ui/FkaPadding'
+import FkaSpaceBottom from './ui/FkaSpaceBottom'
 
 
 export const FieldCard = (props: IIssue) => {
     return (
-        <SpaceBottom>
+        <FkaSpaceBottom>
             <FkaCard>
-                <Padding>
+                <FkaPadding>
                     <View>
                         <FkaTitle>{props.text}</FkaTitle>
                         <Text>{props.desctiption}</Text>
                     </View>
-                </Padding>
+                </FkaPadding>
             </FkaCard>
-        </SpaceBottom>
+        </FkaSpaceBottom>
     )
 }
 

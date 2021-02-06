@@ -1,12 +1,13 @@
-import React from "react";
-import { StyleSheet, View, Text } from "react-native";
-import Container from "../components/ui/Container";
+import React from "react"
+import { StyleSheet, Text, View } from 'react-native';
 import NavigationItem from "../components/NavigationItem";
+import FkaContainer from "../components/ui/FkaContainer";
+import FkaHeadline from "../components/ui/FkaHeadline";
 
-const Home = () => {
+const Menu = () => {
     return (
-        <Container>
-            <Text style={styles.headline}>Hei Ola!</Text>
+        <FkaContainer>
+            <FkaHeadline>Hei Ola!</FkaHeadline>
             <Text style={styles.text}>Velkommen tilbake! Hva ønsker du å gjøre i dag?</Text>
             <View style={styles.menuContainer}>
                 <NavigationItem label="Dashboard" iconName="dashboard" onPressUrl="/dashboard" />
@@ -16,16 +17,11 @@ const Home = () => {
                 <NavigationItem label="Cownter" iconName="cow" onPressUrl="/counter" />
                 <NavigationItem label="Logg ut" iconName="logout" onPressUrl="/" />
             </View>
-        </Container>
+        </FkaContainer>
     )
 }
 
 const styles = StyleSheet.create({
-    headline: {
-        fontSize: 35,
-        fontWeight: '700',
-        marginBottom: 10
-    },
     menuContainer: {
         display: 'flex',
         flexDirection: 'row',
@@ -38,4 +34,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Home;
+export default Menu;

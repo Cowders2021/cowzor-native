@@ -1,27 +1,27 @@
 import React from "react";
 import { Text } from "react-native";
-import Container from "../components/ui/Container";
+import FkaContainer from "../components/ui/FkaContainer";
 import FieldCard from "../components/FieldCard";
 import { useIssueContext } from "../contexts/IssueContext";
 import FkaTitle from "../components/ui/FkaTitle";
-import SpaceBottom from "../components/ui/SpaceBottom";
+import FkaSpaceBottom from "../components/ui/FkaSpaceBottom";
 
 const Fields: React.FC = () => {
 
   const { issueState } = useIssueContext();
 
   return (
-    <Container>
+    <FkaContainer>
       <>
-        <SpaceBottom>
+        <FkaSpaceBottom>
           <FkaTitle>Mine jorder</FkaTitle>
           <Text>Her finner du varsler for alle dine jorder</Text>
-        </SpaceBottom>
+        </FkaSpaceBottom>
         {
           issueState.issues.map((issue) => <FieldCard {...issue} key={issue.id} />)
         }
       </>
-    </Container>
+    </FkaContainer>
   )
 }
 

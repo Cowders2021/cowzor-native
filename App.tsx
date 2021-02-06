@@ -9,8 +9,8 @@ import WeatherStore from './contexts/WeatherContext';
 import CameraPage from './pages/Camera';
 import Dashboard from './pages/Dashboard';
 import Fields from './pages/Fields';
-import Home from "./pages/Home";
 import Login from './pages/Login';
+import Menu from './pages/Menu';
 import Weather from './pages/Weather';
 
 export default function App() {
@@ -23,10 +23,10 @@ export default function App() {
           <WeatherStore>
             <Header />
             <Route exact path="/" component={Login} />
-            <Route path="/home" component={Home} />
             <Route path="/weather" component={Weather} />
             <Route path="/camera" component={CameraPage} />
-            <Route path="/dashboard" component={() => <Dashboard />} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/menu" component={Menu} />
             <IssueStore>
               <Route path="/fields" component={Fields} />
             </IssueStore>

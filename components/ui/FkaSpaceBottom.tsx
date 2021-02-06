@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native'
 
-const SpaceBottom: React.FC = (props) => {
+const FkaSpaceBottom: React.FC = (props) => {
     return (
         <View style={styles.spaceBottom}>
             { props.children}
@@ -15,4 +15,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default SpaceBottom;
+export default FkaSpaceBottom;

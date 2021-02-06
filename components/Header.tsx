@@ -5,16 +5,23 @@ import { FKA_PRIMARY, FKA_PRIMARY_FG } from '../styles/Colors';
 
 const Header = () => {
     const history = useHistory();
-    const onLogoClick = () => {
-        history.push('/')
+    const navigateTo = (path: string): void => {
+        history.push(path)
     }
     return (
         <View style={styles.header}>
-            <TouchableHighlight onPress={onLogoClick}>
-                <Image source={require('../assets/fk-large.png')} style={styles.logo} />
-            </TouchableHighlight>
+            <View style={styles.innerContainer}>
+                <TouchableHighlight onPress={() => navigateTo('/')}>
+                    <Image source={require('../assets/fk-large.png')} style={styles.logo} />
+                </TouchableHighlight>
+                <View>
+                    <Text style={styles.appName}>Cowzor</Text>
+                </View>
+            </View>
             <View>
-                <Text style={styles.appName}>Cowzor</Text>
+                <TouchableHighlight onPress={() => navigateTo('/menu')}>
+                    <Image source={require('../assets/menu.png')} style={styles.menu} />
+                </TouchableHighlight>
             </View>
         </View>
     )
@@ -25,9 +32,15 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
         backgroundColor: FKA_PRIMARY,
         padding: 15,
         paddingTop: 50
+    },
+    innerContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
     },
     logo: {
         height: 50,
@@ -37,6 +50,10 @@ const styles = StyleSheet.create({
         color: FKA_PRIMARY_FG,
         fontSize: 18,
         marginLeft: 10
+    },
+    menu: {
+        height: 40,
+        width: 40
     }
 });
 

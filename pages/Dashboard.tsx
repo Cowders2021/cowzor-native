@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import Container from "../components/ui/Container";
+import FkaContainer from "../components/ui/FkaContainer";
 
 const Dashboard = () => {
     return (
-        <Container>
+        <FkaContainer>
             <View>
                 <Text>hello</Text>
             </View>
-        </Container>
+        </FkaContainer>
     )
 }
 export default Dashboard;

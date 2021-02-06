@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import { Link } from "react-router-native";
-import FkaCard from "./ui/Card";
+import FkaCard from "./ui/FkaCard";
 
 type IconName = 'camera' | 'weather' | 'profile' | 'logout' | 'weed' | 'cow' | 'dashboard';
 interface Props {
@@ -36,17 +36,6 @@ const NavigationItem = (props: Props) => {
 }
 
 const styles = StyleSheet.create({
-    headline: {
-        fontSize: 35,
-        fontWeight: '700',
-        marginBottom: 10
-    },
-    menuContainer: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: "space-between",
-        flexWrap: 'wrap'
-    },
     box: {
         width: '49%',
         height: 100,
@@ -63,10 +52,6 @@ const styles = StyleSheet.create({
     },
     label: {
         marginTop: 10
-    },
-    text: {
-        fontSize: 18,
-        marginBottom: 30
     }
 });
 export default NavigationItem;

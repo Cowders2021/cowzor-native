@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, FlatList, StyleSheet } from 'react-native';
 import { IWeather, List } from '../api/weather/weather.interface';
-import Container from '../components/ui/Container';
+import FkaContainer from '../components/ui/FkaContainer';
 import WeatherRow, { IWeatherRow } from '../components/WeatherRow';
 import WeatherTodayCard from '../components/WeatherTodayCard';
 import { useWeatherContext } from '../contexts/WeatherContext';
@@ -23,7 +23,7 @@ const Weather = () => {
     })
 
     return (
-        <Container>
+        <FkaContainer>
             <Text style={styles.headline}>I dag</Text>
             {
                 weatherState.weather && (
@@ -37,7 +37,7 @@ const Weather = () => {
                 keyExtractor={(item) => item.dt.toString()}
                 renderItem={({ item, index }) => (<WeatherRow  {...mapListItemToWeatherRow(item)} key={`weather-row--${index}`} />)}>
             </FlatList>
-        </Container>
+        </FkaContainer>
     )
 }
 

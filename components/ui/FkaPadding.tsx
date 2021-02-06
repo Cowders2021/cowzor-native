@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-const Padding: React.FC = (props) => {
+const FkaPadding: React.FC = (props) => {
     return (
         <View style={styles.padding}>
             { props.children}
@@ -15,4 +15,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Padding;
+export default FkaPadding;

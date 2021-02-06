@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { FKA_BACKGROUND } from '../../styles/Colors';
 
-const Container: React.FC = (props) => {
+const FkaContainer: React.FC = (props) => {
     return (
         <View style={styles.container}>
             { props.children}
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Container;
+export default FkaContainer;

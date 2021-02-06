@@ -2,16 +2,16 @@ import React from "react"
 import { StyleSheet, View, Text } from "react-native"
 import { useHistory } from "react-router-native"
 import FkaButton from "../components/Button"
-import Container from "../components/ui/Container"
+import FkaContainer from "../components/ui/FkaContainer"
 import { FKA_BASIC_DARK } from "../styles/Colors"
 
 const Login = () => {
     const history = useHistory();
     const onLoginButtonClick = () => {
-        history.push('/home');
+        history.push('/dashboard');
     }
     return (
-        <Container>
+        <FkaContainer>
             <View style={styles.container}>
                 <View style={styles.header}>
                     <Text style={styles.headline}>Felleskjøpet</Text>
@@ -23,7 +23,7 @@ const Login = () => {
                     <FkaButton label="Registrer deg" onClick={onLoginButtonClick} />
                 </View>
             </View>
-        </Container>
+        </FkaContainer>
     )
 }
 
