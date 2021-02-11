@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { SensorAPI } from '../api/sensor/sensor.api';
 import { ISensor } from '../api/sensor/sensor.interface';
@@ -11,72 +11,15 @@ import FkaLabel from '../components/ui/FkaLabel';
 import FkaPadding from '../components/ui/FkaPadding';
 import FkaSpaceBottom from '../components/ui/FkaSpaceBottom';
 import WeatherTodayCard from '../components/WeatherTodayCard';
+import { useSensorContext } from '../contexts/SensorContext';
 import { useWeatherContext } from '../contexts/WeatherContext';
 import { FKA_PRIMARY } from '../styles/Colors';
-
-const fields = [
-    {
-        name: 'Kornåker',
-        id: 121
-    },
-    {
-        name: 'Rabs',
-        id: 122
-    },
-    {
-        name: 'Potetåker',
-        id: 123
-    },
-    {
-        name: 'Myra',
-        id: 124,
-    },
-    {
-        name: 'Litt av hvert',
-        id: 125
-    }
-]
 
 const Dashboard = () => {
     const { weatherState } = useWeatherContext();
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [sensors, setSensors] = useState<any>([])
-
-    useEffect(() => {
-        fetchInterval(1);
-    }, [])
-
-    const fetchInterval = (minute: number) => {
-        fetchSensorData(minute, true);
-        setInterval(() => {
-            fetchSensorData(minute, false)
-        }, 10000)
-    }
-
-    const fetchSensorData = async (minute: number, showLoading: boolean) => {
-        if (showLoading) {
-            setIsLoading(true);
-        }
-        try {
-            const sensors = await SensorAPI.getAll(minute);
-            console.log(filterSensors(sensors));
-            setSensors(filterSensors(sensors));
-            setIsLoading(false);
-        } catch (error) {
-            console.log('error', error)
-            setIsLoading(false)
-        }
-    }
-
-    const filterSensors = (sensors: ISensor[]) => {
-        return sensors.map((sensor) => {
-            const field = fields.find((field) => field.id == sensor.id);
-            return {
-                ...field,
-                sensor
-            }
-        })
-    }
+    const { sensorState } = useSensorContext();
 
     const mapToWeatherToday = (weather: IWeather) => ({
         temp: weather.list[0].main.temp,
@@ -105,26 +48,26 @@ const Dashboard = () => {
                             </FkaSpaceBottom>
                             <FkaHeadline size="medium">Mine åkere</FkaHeadline>
                             {
-                                sensors.map((sensor: any, index: number) => (
+                                sensorState.sensors.map((sensor: any, index: number) => (
                                     <FkaSpaceBottom key={`field-row--${index}`}>
                                         <FkaCard>
                                             <FkaPadding>
                                                 <View style={styles.row}>
                                                     <FkaHeadline size="medium">{sensor.name}</FkaHeadline>
-                                                    <Text style={styles.date}>{sensor.sensor.eventEnqueuedUtcTime}</Text>
+                                                    <Text style={styles.date}>{sensor.eventEnqueuedUtcTime}</Text>
                                                 </View>
                                                 <View style={styles.fieldRow}>
                                                     <View>
                                                         <FkaLabel>Temp</FkaLabel>
-                                                        <Text>{sensor.sensor.temperature}</Text>
+                                                        <Text>{sensor.temperature}</Text>
                                                     </View>
                                                     <View>
                                                         <FkaLabel>Soil</FkaLabel>
-                                                        <Text>{sensor.sensor.soil}</Text>
+                                                        <Text>{sensor.soil}</Text>
                                                     </View>
                                                     <View>
                                                         <FkaLabel>Fuktighet</FkaLabel>
-                                                        <Text>{sensor.sensor.humidity}</Text>
+                                                        <Text>{sensor.humidity} %</Text>
                                                     </View>
                                                 </View>
                                             </FkaPadding>
@@ -132,12 +75,10 @@ const Dashboard = () => {
                                     </FkaSpaceBottom>
                                 ))
                             }
-
                         </FkaContainer >
                     </ScrollView>
                 )
             }
-
         </>
     )
 }

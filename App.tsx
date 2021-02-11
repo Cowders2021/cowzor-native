@@ -5,6 +5,7 @@ import Header from './components/Header';
 import FkaToast from './components/Toast';
 import AnalyzerStore from './contexts/AnalyzerContext';
 import IssueStore from './contexts/IssueContext';
+import SensorStore from './contexts/SensorContext';
 import ToastStore from './contexts/ToastContext';
 import WeatherStore from './contexts/WeatherContext';
 import CameraPage from './pages/Camera';
@@ -13,6 +14,7 @@ import Dashboard from './pages/Dashboard';
 import Fields from './pages/Fields';
 import Login from './pages/Login';
 import Menu from './pages/Menu';
+import Subscription from './pages/Subscription';
 import Weather from './pages/Weather';
 
 export default function App() {
@@ -25,10 +27,12 @@ export default function App() {
           <AnalyzerStore>
             <WeatherStore>
               <Header />
-              <Route exact path="/" component={Login} />
+              <Route exact path="/" component={Subscription} />
               <Route path="/weather" component={Weather} />
               <Route path="/camera" component={CameraPage} />
-              <Route path="/dashboard" component={Dashboard} />
+              <SensorStore>
+                <Route path="/dashboard" component={Dashboard} />
+              </SensorStore>
               <Route path="/cownter" component={Cownter} />
               <Route path="/menu" component={Menu} />
               <IssueStore>
