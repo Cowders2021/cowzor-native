@@ -11,7 +11,7 @@ export const sensorReducer = (state: SensorState, action: SensorActions): any =>
         case SensorActionTypes.UpdateSensor:
             return {
                 ...state,
-                sensors: [...state.sensors, action.payload]
+                sensors: action.payload
             }
         default:
             return {

@@ -47,6 +47,8 @@ const SensorStore: React.FC = (props) => {
     const [sensorState, dispatch] = useReducer(sensorReducer, initialSensorState.sensorState);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
+    const [sens, setSens] = useState<any[]>([])
+
     useEffect(() => {
         fetchInterval(5);
     }, [])
@@ -74,33 +76,47 @@ const SensorStore: React.FC = (props) => {
     }
 
     const updateSensor = (sensor: ISensor) => {
-        console.log('a', sensor);
-        const oldSensor = sensorState.sensors.find((s: ISensor) => s.id === sensor.id);
-        if (oldSensor) {
+        const exist = sens.some((s: ISensor) => s.id === sensor.id);
+
+        console.log('exist', exist);
+        
+        if (exist) {
+            const oldSensor = sens.find((s: ISensor) => s.id === sensor.id);
+            // console.log('UPDATE-----', oldSensor)
+            const res = updateSensorData(sensor, oldSensor);
             dispatch({
                 type: SensorActionTypes.UpdateSensor,
-                payload: updateSensorData(sensor, oldSensor)
+                payload: res
             })
         } else {
-            dispatch({
-                type: SensorActionTypes.SetSenor,
-                payload: {
-                    ...sensor,
-                    name: fields.find((field) => field.id == sensor.id)?.name
-                }
-            })
+            if (sensor) {
+                // console.log('SET-----', sensor)
+                setSens([...sens, sensor])
+                dispatch({
+                    type: SensorActionTypes.SetSenor,
+                    payload: {
+                        ...sensor,
+                        name: fields.find((field) => field.id == sensor.id)?.name
+                    }
+                })
+            }
         }
     }
 
-    const updateSensorData = (newSensor: ISensor, oldSensor: ISensor) => {
-        const name =  fields.find((field) => field.id == newSensor.id)?.name
-        return {
+    const updateSensorData = (newSensor: ISensor, oldSensor: ISensor): ISensor[] => {
+        const name =  fields.find((field) => field.id == newSensor.id)?.name;
+        const filter = sensorState.sensors.filter((s: ISensor) => s.id !== newSensor.id);
+        console.log('FILTER', filter);
+        const updatedSensorData = {
             ...oldSensor,
             soil: newSensor.soil ? newSensor.soil : oldSensor.soil,
             temperature: newSensor.temperature ? newSensor.temperature : oldSensor.temperature,
             humidity: newSensor.humidity ? newSensor.humidity : oldSensor.humidity,
             name: name
         }
+
+        const res = [...filter, updatedSensorData]
+        return res;
     }
 
     return (

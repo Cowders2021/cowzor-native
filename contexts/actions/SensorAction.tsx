@@ -1,3 +1,5 @@
+import { ISensor } from "../../api/sensor/sensor.interface";
+
 export enum SensorActionTypes {
     SetSenor = "SET_SENSOR",
     UpdateSensor = "UPDATE_SENSOR"
@@ -10,7 +12,7 @@ type SetSensor = {
 
 type UpdateSensor = {
     readonly type: SensorActionTypes.UpdateSensor,
-    readonly payload: any
+    readonly payload: ISensor[]
 }
 
 export type SensorActions = SetSensor | UpdateSensor;
