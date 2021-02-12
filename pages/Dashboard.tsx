@@ -11,20 +11,112 @@ import FkaLabel from '../components/ui/FkaLabel';
 import FkaPadding from '../components/ui/FkaPadding';
 import FkaSpaceBottom from '../components/ui/FkaSpaceBottom';
 import WeatherTodayCard from '../components/WeatherTodayCard';
+import { SensorActionTypes } from '../contexts/actions/SensorAction';
 import { useSensorContext } from '../contexts/SensorContext';
 import { useWeatherContext } from '../contexts/WeatherContext';
 import { FKA_PRIMARY } from '../styles/Colors';
 
+
+const fields = [
+    {
+        name: 'Kornåker',
+        id: 121
+    },
+    {
+        name: 'Rabs',
+        id: 122
+    },
+    {
+        name: 'Potetåker',
+        id: 123
+    },
+    {
+        name: 'Myra',
+        id: 124,
+    },
+    {
+        name: 'Litt av hvert',
+        id: 125
+    }
+]
+
 const Dashboard = () => {
     const { weatherState } = useWeatherContext();
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [sensors, setSensors] = useState<any>([])
-    const { sensorState } = useSensorContext();
+    const { sensorState, dispatch } = useSensorContext();
 
     const mapToWeatherToday = (weather: IWeather) => ({
         temp: weather.list[0].main.temp,
         type: weather.list[0].weather[0].main || ''
     })
+
+    useEffect(() => {
+        fetchSensorData(5, true);
+    }, [])
+
+    useEffect(() => {
+        fetchSensorData(5, false);
+    }, [sensorState.sensors])
+
+    const fetchInterval = (minute: number) => {
+        setInterval(() => {
+            fetchSensorData(minute, false)
+        }, 10000)
+    }
+
+
+    const fetchSensorData = async (minute: number, showLoading: boolean) => {
+        if (showLoading) {
+            setIsLoading(true);
+        }
+        try {
+            const sensors = await SensorAPI.getAll(minute);
+            const index = sensors.length;
+            updateSensor(sensors[index - 1]);
+            setIsLoading(false);
+        } catch (error) {
+            setIsLoading(false)
+        }
+    }
+
+    const updateSensor = (sensor: ISensor) => {
+        const oldSensor = sensorState.sensors.find((s: ISensor) => s.id === sensor.id);
+        console.log('OLD', oldSensor);
+        if (oldSensor) {
+            // console.log('UPDATE-----', oldSensor)
+            const res = updateSensorData(sensor, oldSensor);
+            dispatch({
+                type: SensorActionTypes.UpdateSensor,
+                payload: res
+            })
+        } else {
+            if (sensor) {
+                // console.log('SET-----', sensor)
+                dispatch({
+                    type: SensorActionTypes.SetSenor,
+                    payload: {
+                        ...sensor,
+                        name: fields.find((field) => field.id == sensor.id)?.name
+                    }
+                })
+            }
+        }
+    }
+
+    const updateSensorData = (newSensor: ISensor, oldSensor: ISensor): ISensor[] => {
+        const name =  fields.find((field) => field.id == newSensor.id)?.name;
+        const filter = sensorState.sensors.filter((s: ISensor) => s.id !== newSensor.id);
+        const updatedSensorData = {
+            ...oldSensor,
+            soil: newSensor.soil ? newSensor.soil : oldSensor.soil,
+            temperature: newSensor.temperature ? newSensor.temperature : oldSensor.temperature,
+            humidity: newSensor.humidity ? newSensor.humidity : oldSensor.humidity,
+            name: name
+        }
+        const res = [...filter, updatedSensorData]
+        return res;
+    }
+
 
     return (
         <>
