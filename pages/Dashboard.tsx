@@ -58,12 +58,6 @@ const Dashboard = () => {
         fetchSensorData(5, false);
     }, [sensorState.sensors])
 
-    const fetchInterval = (minute: number) => {
-        setInterval(() => {
-            fetchSensorData(minute, false)
-        }, 10000)
-    }
-
 
     const fetchSensorData = async (minute: number, showLoading: boolean) => {
         if (showLoading) {
@@ -81,9 +75,7 @@ const Dashboard = () => {
 
     const updateSensor = (sensor: ISensor) => {
         const oldSensor = sensorState.sensors.find((s: ISensor) => s.id === sensor.id);
-        console.log('OLD', oldSensor);
         if (oldSensor) {
-            // console.log('UPDATE-----', oldSensor)
             const res = updateSensorData(sensor, oldSensor);
             dispatch({
                 type: SensorActionTypes.UpdateSensor,
@@ -91,7 +83,6 @@ const Dashboard = () => {
             })
         } else {
             if (sensor) {
-                // console.log('SET-----', sensor)
                 dispatch({
                     type: SensorActionTypes.SetSenor,
                     payload: {
@@ -140,7 +131,7 @@ const Dashboard = () => {
                             </FkaSpaceBottom>
                             <FkaHeadline size="medium">Mine åkere</FkaHeadline>
                             {
-                                sensorState.sensors.map((sensor: any, index: number) => (
+                                sensorState.sensors.sort((a: ISensor, b: ISensor) => a.id - b.id).map((sensor: any, index: number) => (
                                     <FkaSpaceBottom key={`field-row--${index}`}>
                                         <FkaCard>
                                             <FkaPadding>
